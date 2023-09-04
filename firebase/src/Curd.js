@@ -9,9 +9,9 @@ export default class Curd extends React.Component{
             db:'',
             username:'',
             firstname:'',
-            lastname:''
-            // phonenumber:'',
-            // dob:''
+            lastname:'',
+            phonenumber:'',
+            dob:''
         }
         this.interface = this.interface.bind(this);
     }
@@ -39,7 +39,7 @@ export default class Curd extends React.Component{
                 onChange={e =>{this.setState({lastname: e.target.value});}}/>
                 <br/><br/>
 
-                {/* <label>Phone Number</label>
+                <label>Phone Number</label>
                 <input type='number' id='phone' value={this.state.phonenumber}
                 onChange={e =>{this.setState({phonenumber: e.target.value});}}/>
                 <br/><br/>
@@ -47,7 +47,7 @@ export default class Curd extends React.Component{
                 <label>Date of Birth</label>
                 <input type='date' id='dob' value={this.state.dob}
                 onChange={e =>{this.setState({dob: e.target.value});}}/>
-                <br/><br/> */}
+                <br/><br/> 
 
                 <button id='add' onClick={this.interface}>Insert</button>
                 <button id='update' onClick={this.interface}>Update</button>
@@ -77,9 +77,9 @@ export default class Curd extends React.Component{
         return{
             username: this.state.username,
             firstname: this.state.firstname,
-            lastname: this.state.lastname
-            // phonenumber: Number(this.state.phonenumber),
-            // dob: this.state.dob
+            lastname: this.state.lastname,
+            phonenumber: Number(this.state.phonenumber),
+            dob: this.state.dob
         }
     }
 
@@ -88,18 +88,18 @@ export default class Curd extends React.Component{
         const data = this.getAllInputes();
         set(ref(db,'Customer/'+data.username),{
             firstname: data.firstname,
-            lastname: data.lastname
-            // phonenumber: data.phonenumber,
-            // dob: data.dob
+            lastname: data.lastname,
+            phonenumber: data.phonenumber,
+            dob: data.dob
         })
         .then(()=>{alert('Data Added Successfully')})
         .catch((error)=>{alert("There was an error, datails: "+error)});
         this.setState({
             username:'',
             firstname:'',
-            lastname:''
-            // phonenumber:'',
-            // dob:''
+            lastname:'',
+            phonenumber:'',
+            dob:''
         })
     }
 
